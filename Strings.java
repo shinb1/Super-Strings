@@ -2,9 +2,9 @@ public class Strings {
 
 	public static void main(String[] args) {
 		String str = new String("A string");
-		String s = "amazing";
+		String s = "abcdefghijklmnopqrstuvwxyz";
 
-		System.out.println(isAbecedarian(s));
+		System.out.println(isCaptainCrunch(s));
 
 
 		// if (str.equals(s)) {
@@ -79,6 +79,28 @@ public class Strings {
 			}
 
 			return true;
+		}
+
+		public static boolean isDupledrome(String s) {
+			for (int i=0; i < s.length()-1; i+=2) {
+				if (s.charAt(i)!=s.charAt(i+1)) {
+					return false;
+				}
+			}
+
+			return true;
+		}
+
+		public static String isCaptainCrunch(String s) {
+
+			for (int i=0; i < s.length(); i++) {
+				
+				s.charAt(i) = s.charAt(i) + 13;
+
+
+			}
+
+			return s;
 		}
 
 		
