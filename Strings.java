@@ -92,16 +92,22 @@ public class Strings {
 		}
 
 		public static String isCaptainCrunch(String s) {
+			char letter;
 
 			for (int i=0; i < s.length(); i++) {
 				
-				s.charAt(i) = s.charAt(i) + 13;
+				letter = cast(s.charAt(i) + 13);
 
 
 			}
 
 			return s;
 		}
+
+		char coded = (char)((int)c + 13);
+		String str = "" + c;
+		
+
 
 		
 
