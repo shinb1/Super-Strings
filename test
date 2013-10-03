@@ -1,0 +1,6 @@
+#!/bin/bash
+
+rm *.class
+javac Bingo.java Tester.java BingoTester.java -classpath /usr/share/java/junit.jar
+java -cp .:/usr/share/java/junit.jar org.junit.runner.JUnitCore BingoTester
+rm *.class
