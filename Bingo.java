@@ -8,15 +8,17 @@ public class Bingo {
 							{16, 17, 18, 19, 20},
 							{21, 22, 23, 24, 25}	};;
 
-		int[] drawn = {3, 7, 11, 17, 23, 19, 15, 9};
-
-
+		int[] drawn = {2, 8, 12, 6, 4, 10, 14, 25};
 
 		print(correct(board, drawn));
 		
-		if (rowBingo(board) == true || colBingo(board) == true) {
+		if (rowBingo(board, drawn) == true || colBingo(board, drawn) == true) {
 			System.out.println("true");;
+		} else {
+			System.out.println("false");
 		}
+
+		System.out.println(5/2);
 
 
 	}
@@ -32,9 +34,9 @@ public class Bingo {
 	
 	public static boolean bingo(int[][] board, int[] drawn) {
 
-		print(board);
+		print(correct(board, drawn));
 
-		if (rowBingo(board) == true || colBingo(board) == true) {
+		if (rowBingo(board, drawn) == true || colBingo(board, drawn) == true) {
 			return true;
 		}
 
@@ -43,8 +45,9 @@ public class Bingo {
 
 	public static int[][] correct(int[][] board, int[] drawn) {
 
-		int [][] newBoard = new int[board.length][board.length];
+		board[board.length/2][board.length/2] = 0;
 
+		int [][] newBoard = board;
 		for (int row = 0; row < board.length; row++) {
 			
 			for (int col=0; col<board.length; col++) {
@@ -63,7 +66,9 @@ public class Bingo {
 
 	}
 
-	public static boolean rowBingo(int[][] board) {
+	public static boolean rowBingo(int[][] board, int[] drawn) {
+
+		correct(board, drawn);
 
 		int count = 0;
 
@@ -82,7 +87,9 @@ public class Bingo {
 
 	}
 
-	public static boolean colBingo(int[][] board) {
+	public static boolean colBingo(int[][] board, int[] drawn) {
+
+		correct(board, drawn);
 
 		int count = 0;
 
@@ -100,5 +107,17 @@ public class Bingo {
 			return false;
 
 	}
+
+	// public static boolean diamondBingo(int[][] board, int[] drawn) {
+
+	// 	correct(board, drawn);
+
+	// 	int count = 0;
+
+	// 	for (int i = board.length/2; i>=0; i--) {
+			
+	// 	}
+
+	// }
 
 }
