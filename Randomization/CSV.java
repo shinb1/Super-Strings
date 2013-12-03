@@ -27,11 +27,8 @@ public class CSV {
 		Random random = new Random();
 
 		String name;
-		double amount = a.length();
+		int amount;
 		
-		while(amount>a.length) {
-
-		}
 		System.out.println("How many people would you like to choose?");
 		amount = reader.nextInt();
 
