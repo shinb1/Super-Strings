@@ -6,8 +6,9 @@ public class CSV {
 	
 	public static void main(String[] args) {
 
-		String[] names = {"Steven","Miles","Jack","David","Michael","Jason"};
+		String[] names = {"Steven","Ben","Jack","David","Michael","Jason"};
 
+		printArray(names);
 		choose(names);
 		
 	}
