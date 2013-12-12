@@ -1,46 +1,73 @@
 import java.util.Scanner;
+import java.io.*;
 import java.util.Random;
 
 public class CSV {
-	
-	
+
 	public static void main(String[] args) {
+        Scanner reader = new Scanner(System.in);
+        String[] students = new String[31];
 
-		String[] names = {"Steven","Ben","Jack","David","Michael","Jason"};
+      	try {
+            Scanner scan = new Scanner(new File("class.csv"));
+            String[] students2 = scan.nextLine().split(",");
+            students = students2;
+        } catch(IOException e) {
+            System.out.println("Couldn't find file");
+            System.exit(1);
+        }
 
-		printArray(names);
-		choose(names);
-		
-	}
+        System.out.println("Random Student(1) or Group Students(2)");
+        String input = reader.nextLine();
 
-	public static void printArray(String[] a) {
-		
-		for (int i=0; i < a.length; i++) {
-			System.out.println(a[i] + " ");
-		}
+        
 
-		System.out.println();
-	}
+        while (!((input.equals("1") || (input.equals("2"))))) {
 
-	public static void choose(String[] a) {
+	      	System.out.println("Please enter a one or two");
+	       	System.out.println("Random Student(1) or Group Students(2)");
+	        input = reader.nextLine();
+	   
+	    }
 
-		Scanner reader = new Scanner(System.in);
-		Random random = new Random();
+	    if (input.equals("1")) {
+	        Random random = new Random();
+	        int n = random.nextInt(students.length);
+	        System.out.println(students[n]);
+	    } else if (input.equals("2")) {
+	        System.out.println("What size should the groups be?");
+	        int groupSize = reader.nextInt();
+	        group(students, groupSize);
+	    }    
+    }
 
-		String name;
-		int amount;
-		
-		System.out.println("How many people would you like to choose?");
-		amount = reader.nextInt();
+    public static void group(String[] students, int groupSize) {
+        Random random = new Random();
 
-		for (int i=0; i<amount; i++) {
-			name = a[random.nextInt(a.length)];
-			System.out.println(name);
-		}
+       	for (int i=0; i<students.length; i++) {
+            int n = random.nextInt(31-i) + i;
 
-	}
-	
+            String extraStudent = students[i];
+            students[i] = students[n];
+            students[n] = extraStudent;
+        }
 
+        int count = 0;
 
-	
+        for (int i=1; i<=students.length/groupSize+1; i++) {
+            System.out.print("Group " + i +": ");
+
+        	for (int j=0; j<groupSize; j++) {
+             	if (count<students.length) {
+                    System.out.print(students[count] + "  ");
+                    count++;
+                }
+            }
+
+         System.out.println();
+         System.out.println();
+
+        }
+    }            
+            
 }
